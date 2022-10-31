@@ -14,6 +14,12 @@ func main() {
 	c := make(chan int)
 
 	//for para lanzar as goroutines
+	Envia(c)
+
+	Mostra(c)
+}
+
+func Envia(c chan int) {
 	for i := 0; i < 10; i++ {
 		//func para gerar e enviar os números para o canal
 		go func() {
@@ -22,7 +28,9 @@ func main() {
 			}
 		}()
 	}
+}
 
+func Mostra(c chan int) {
 	for k := 0; k < 100; k++ {
 		fmt.Println(k, "\t", <-c)
 	}
